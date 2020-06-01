@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>RemoteDataManager</Name>
+    <Assembly>RemoteDataManager.dll</Assembly>
+    <AddInId>2f68e146-af48-42b4-9afd-165f18a4b8dc</AddInId>
+    <FullClassName>RemoteDataManager.App</FullClassName>
+    <VendorId>Mikael Santrolli</VendorId>
+    <VendorDescription>mikael.santrolli@gmail.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>

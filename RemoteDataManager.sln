@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteDataManager", "RemoteDataManager.csproj", "{2F68E146-AF48-42B4-9AFD-165F18A4B8DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2F68E146-AF48-42B4-9AFD-165F18A4B8DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F68E146-AF48-42B4-9AFD-165F18A4B8DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F68E146-AF48-42B4-9AFD-165F18A4B8DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F68E146-AF48-42B4-9AFD-165F18A4B8DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FD3D431-71B3-4E2C-AE23-0B2D112FDD58}
+	EndGlobalSection
+EndGlobal
