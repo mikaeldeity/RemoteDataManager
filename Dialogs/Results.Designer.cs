@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.TableButtons = new System.Windows.Forms.TableLayoutPanel();
             this.OkButton = new System.Windows.Forms.Button();
@@ -61,7 +61,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 3F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(284, 346);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(339, 441);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // TableButtons
@@ -72,11 +72,11 @@
             this.TableButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableButtons.Controls.Add(this.OkButton, 0, 0);
             this.TableButtons.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableButtons.Location = new System.Drawing.Point(8, 311);
+            this.TableButtons.Location = new System.Drawing.Point(8, 406);
             this.TableButtons.Name = "TableButtons";
             this.TableButtons.RowCount = 1;
             this.TableButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableButtons.Size = new System.Drawing.Size(273, 29);
+            this.TableButtons.Size = new System.Drawing.Size(328, 29);
             this.TableButtons.TabIndex = 3;
             // 
             // OkButton
@@ -102,14 +102,14 @@
             this.ParameterColumn,
             this.ValueColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.ResultsDatagrid, 2);
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ResultsDatagrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ResultsDatagrid.DefaultCellStyle = dataGridViewCellStyle1;
             this.ResultsDatagrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResultsDatagrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ResultsDatagrid.Enabled = false;
@@ -119,7 +119,7 @@
             this.ResultsDatagrid.ReadOnly = true;
             this.ResultsDatagrid.RowHeadersVisible = false;
             this.ResultsDatagrid.ShowEditingIcon = false;
-            this.ResultsDatagrid.Size = new System.Drawing.Size(268, 267);
+            this.ResultsDatagrid.Size = new System.Drawing.Size(323, 362);
             this.ResultsDatagrid.TabIndex = 0;
             // 
             // ParameterColumn
@@ -146,7 +146,7 @@
             this.LinkDropDown.Location = new System.Drawing.Point(58, 6);
             this.LinkDropDown.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
             this.LinkDropDown.Name = "LinkDropDown";
-            this.LinkDropDown.Size = new System.Drawing.Size(218, 21);
+            this.LinkDropDown.Size = new System.Drawing.Size(273, 21);
             this.LinkDropDown.TabIndex = 1;
             // 
             // label1
@@ -165,11 +165,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 346);
+            this.ClientSize = new System.Drawing.Size(339, 441);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(300, 385);
+            this.MinimumSize = new System.Drawing.Size(355, 480);
             this.Name = "Results";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -143,20 +143,7 @@ namespace Utils
             }
 
             return linksdict;
-        }
-        internal static ElementId FindMaterialByName(Document doc, string name)
-        {
-            FilteredElementCollector materialcollector = new FilteredElementCollector(doc);
-            ICollection<ElementId> collmat = materialcollector.OfClass(typeof(Material)).ToElementIds();
-            foreach (ElementId i in collmat)
-            {
-                if(name.ToLower() == doc.GetElement(i).Name.ToLower())
-                {
-                    return i;
-                }
-            }
-            return null;
-        }
+        }        
         internal static void GetResults(DataGridView datagrid, List<string[]> results)
         {
             foreach(string[] p in results)
@@ -166,10 +153,35 @@ namespace Utils
                 datagrid.Rows[index].Cells["ValueColumn"].Value = p[1];                
             }
         }
-    }    
+    }
+    class Materials
+    {
+        internal static ElementId FindMaterialByName(Document doc, string name)
+        {
+            ICollection<ElementId> collmat = new FilteredElementCollector(doc).OfClass(typeof(Material)).ToElementIds();
+            foreach (ElementId i in collmat)
+            {
+                if (name.ToLower() == doc.GetElement(i).Name.ToLower())
+                {
+                    return i;
+                }
+            }
+            return null;
+        }
+        internal static List<string> GetDocumentMaterials(Document doc)
+        {
+            List<string> materials = new List<string>();
+            ICollection<ElementId> collmat = new FilteredElementCollector(doc).OfClass(typeof(Material)).ToElementIds();
+            foreach (ElementId i in collmat)
+            {
+                materials.Add(doc.GetElement(i).Name);
+            }
+            return materials;
+        }
+    }
     class Parameters
     {
-        internal static string ChangeTypeParameter(ElementType type, Units units, string name, string value)
+        internal static string EditTypeParameter(ElementType type, Units units, string name, string value)
         {
             try
             {
@@ -254,7 +266,7 @@ namespace Utils
                     }
                     else if (paramtype == "Material")
                     {
-                        ElementId material = DocumentUtils.FindMaterialByName(type.Document, name);
+                        ElementId material = Materials.FindMaterialByName(type.Document, name);
                         if (material != null)
                         {
                             parameter.Set(material);
@@ -268,7 +280,7 @@ namespace Utils
                 return e.Message;
             }
         }
-        internal static string ChangeGlobalParameter(Document doc, Units units, string name, string value)
+        internal static string EditGlobalParameter(Document doc, Units units, string name, string value)
         {
             try
             {
@@ -314,7 +326,7 @@ namespace Utils
                         {
                             ElementIdParameterValue dvalue = parameter.GetValue() as ElementIdParameterValue;
 
-                            ElementId mat = DocumentUtils.FindMaterialByName(doc, value);
+                            ElementId mat = Materials.FindMaterialByName(doc, value);
 
                             if (mat != null)
                             {

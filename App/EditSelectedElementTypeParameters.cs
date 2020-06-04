@@ -107,7 +107,7 @@ namespace RemoteDataManager
 
                 foreach (string parameter in paramdict.Keys)
                 {
-                    string r = Parameters.ChangeTypeParameter(type, units, parameter, paramdict[parameter]);
+                    string r = Parameters.EditTypeParameter(type, units, parameter, paramdict[parameter]);
 
                     results.Add(new string[] { parameter, r });
                 }

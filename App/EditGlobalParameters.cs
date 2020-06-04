@@ -83,7 +83,7 @@ namespace RemoteDataManager
 
                 foreach (string parameter in paramdict.Keys)
                 {
-                    string r = Parameters.ChangeGlobalParameter(link.OpenDocument, Units, parameter, paramdict[parameter]);
+                    string r = Parameters.EditGlobalParameter(link.OpenDocument, Units, parameter, paramdict[parameter]);
 
                     results.Add(new string[] { parameter, r });
                 }

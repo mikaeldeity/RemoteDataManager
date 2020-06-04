@@ -82,7 +82,7 @@
     <Compile Include="Dialogs\Results.Designer.cs">
       <DependentUpon>Results.cs</DependentUpon>
     </Compile>
-    <Compile Include="DocumentUtils.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="RemoteDataManager.addin">
