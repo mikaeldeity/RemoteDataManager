@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Autodesk.Revit.DB;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,62 +8,59 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Utils;
 using static RemoteDataManager.CompareParameters;
 
 namespace RemoteDataManager
 {
-    public partial class CompareParametersDialog : Form
+    public partial class CompareParametersDialog : System.Windows.Forms.Form
     {
         public CompareParametersDialog()
         {
             InitializeComponent();
 
-            this.CategoryDropDown.DataSource = CompareParameters.Categories;
+            List<string> categories = Database.Keys.ToList();
 
-            this.CategoryDropDown.SelectedItem = CompareParameters.Categories.First();
+            categories.Sort();
+
+            this.CategoryDropDown.DataSource = categories;
         }
-
         private void CategoryDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<string> families = new List<string>();
+            string category = CategoryDropDown.SelectedItem.ToString();
 
-            foreach(RemoteType type in CompareParameters.Types)
-            {
-                if(type.Category == this.CategoryDropDown.SelectedItem.ToString())
-                {
-                    families.Add(type.Family);
-                }
-            }
+            List<string> families = CompareParameters.Database[category].Keys.ToList();
 
-            List<string> uniquefamilies = families.Distinct().ToList();
+            families.Sort();
 
-            this.FamilyDropDown.DataSource = uniquefamilies;
-
-            this.FamilyDropDown.SelectedItem = uniquefamilies.First();
+            this.FamilyDropDown.DataSource = families;
         }
-
         private void FamilyDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            List<string> symbols = new List<string>();
+            string category = CategoryDropDown.SelectedItem.ToString();
 
-            foreach (RemoteType type in CompareParameters.Types)
-            {
-                if (type.Category == this.CategoryDropDown.SelectedItem.ToString() && type.Family == this.FamilyDropDown.SelectedItem.ToString())
-                {
-                    symbols.Add(type.Name);
-                }
-            }
+            string family = FamilyDropDown.SelectedItem.ToString();
 
-            List<string> uniquetypes = symbols.Distinct().ToList();
+            List<string> types = CompareParameters.Database[category][family].Keys.ToList();
 
-            this.FamilyDropDown.DataSource = uniquetypes;
+            types.Sort();
 
-            this.FamilyDropDown.SelectedItem = uniquetypes.First();
+            this.TypeDropDown.DataSource = types;
         }
-
         private void TypeDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            TypesDatagrid.Rows.Clear();
+
+            int count = TypesDatagrid.ColumnCount;
+
+            while(TypesDatagrid.ColumnCount > 3)
+            {
+                TypesDatagrid.Columns.RemoveAt(TypesDatagrid.ColumnCount - 1);
+            }
+
+            List<ElementType> types = CompareParameters.Database[CategoryDropDown.SelectedItem.ToString()][FamilyDropDown.SelectedItem.ToString()][TypeDropDown.SelectedItem.ToString()];
+
+            Parameters.GetCombinedElementTypeParameters(types, CompareParameters.Units, TypesDatagrid);
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Utils;
 
 namespace RemoteDataManager
 {
@@ -15,43 +16,25 @@ namespace RemoteDataManager
     {
         internal static Units Units;
 
-        internal static Dictionary<string, Document> LinksDict = new Dictionary<string, Document>();
+        internal static Dictionary<string, Link> LinksDict;
 
-        internal static List<string> Categories = new List<string>();
-
-        internal static List<string> Families = new List<string>();
-
-        internal static List<RemoteType> Types = new List<RemoteType>();
+        internal static Dictionary<string, Dictionary<string, Dictionary<string, List<ElementType>>>> Database;
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
-        {
+        {            
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
+            Database = new Dictionary<string, Dictionary<string, Dictionary<string, List<ElementType>>>>();
+
             Units = doc.GetUnits();
 
-            IList<Element> links = new FilteredElementCollector(doc).OfClass(typeof(RevitLinkInstance)).ToElements();
-
-            LinksDict = new Dictionary<string, Document>();
-
-            foreach (RevitLinkInstance li in links)
-            {
-                RevitLinkType linktype = doc.GetElement(li.GetTypeId()) as RevitLinkType;
-
-                if (RevitLinkType.IsLoaded(doc, linktype.Id))
-                {
-                    LinksDict[li.GetLinkDocument().Title] = li.GetLinkDocument();
-                }
-            }
-
-            //GET FAMILIES AND CAT
+            LinksDict = DocumentUtils.GetAllLinks(doc);
 
             foreach (string link in LinksDict.Keys)
             {
-                Document linkdoc = LinksDict[link];
-
-                //Database[linkdoc.Title] = new Dictionary<string, Dictionary<string, Dictionary<string, ElementType>>>();
+                Document linkdoc = LinksDict[link].Document;
 
                 IList<Element> typecollector = new FilteredElementCollector(linkdoc).OfClass(typeof(ElementType)).ToElements();
 
@@ -59,38 +42,38 @@ namespace RemoteDataManager
                 {
                     ElementType type = el as ElementType;
 
-                    RemoteType remotetype = new RemoteType(type);
+                    if(type.Category == null) { continue; }
 
-                    Types.Add(remotetype);
+                    string category = type.Category.Name;
 
-                    if (!Categories.Contains(remotetype.Category))
+                    string family = type.FamilyName;
+
+                    string name = type.Name;
+
+                    if (!Database.ContainsKey(category))
                     {
-                        Categories.Add(remotetype.Category);
+                        Database.Add(category, new Dictionary<string, Dictionary<string, List<ElementType>>>());
                     }
+
+                    if (!Database[category].ContainsKey(family))
+                    {
+                        Database[category].Add(family, new Dictionary<string, List<ElementType>>());
+                    }
+
+                    if (!Database[category][family].ContainsKey(name))
+                    {
+                        Database[category][family].Add(name, new List<ElementType>());
+                    }
+
+                    Database[category][family][name].Add(type);
                 }
             }
 
-            CompareParametersDialog dialog = new CompareParametersDialog();
+            CompareParametersDialog dialog = new CompareParametersDialog();            
 
             dialog.ShowDialog();
 
             return Result.Succeeded;
-        }
-        public struct RemoteType
-        {
-            public RemoteType(ElementType type)
-            {
-                Name = type.Name;
-                Type = type;
-                Link = type.Document;
-                Family = type.FamilyName;
-                Category = Link.GetElement(type.get_Parameter(BuiltInParameter.ELEM_CATEGORY_PARAM).AsElementId()).Name;
-            }
-            public string Name { get; }
-            public ElementType Type { get; }            
-            public Document Link { get; }
-            public string Family { get; }
-            public string Category { get; }
-        }
+        }        
     }
 }

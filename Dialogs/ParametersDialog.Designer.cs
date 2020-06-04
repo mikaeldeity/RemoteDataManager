@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ParametersDataGrid = new System.Windows.Forms.DataGridView();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -60,15 +59,13 @@
             this.ParametersDataGrid.AllowUserToAddRows = false;
             this.ParametersDataGrid.AllowUserToDeleteRows = false;
             this.ParametersDataGrid.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            this.ParametersDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ParametersDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ParametersDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.ParametersDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ParametersDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ParametersDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ParametersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ParametersDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdColumn,
@@ -76,14 +73,14 @@
             this.TypeColumn,
             this.ParameterColumn,
             this.ValueColumn});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ParametersDataGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ParametersDataGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.ParametersDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ParametersDataGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.ParametersDataGrid.Location = new System.Drawing.Point(8, 103);
@@ -93,6 +90,7 @@
             this.ParametersDataGrid.RowHeadersVisible = false;
             this.ParametersDataGrid.Size = new System.Drawing.Size(323, 297);
             this.ParametersDataGrid.TabIndex = 0;
+            this.ParametersDataGrid.TabStop = false;
             // 
             // IdColumn
             // 
@@ -105,21 +103,18 @@
             // EditColumn
             // 
             this.EditColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.EditColumn.FillWeight = 25.64103F;
             this.EditColumn.HeaderText = "Edit";
-            this.EditColumn.MinimumWidth = 15;
             this.EditColumn.Name = "EditColumn";
             this.EditColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EditColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.EditColumn.Width = 50;
+            this.EditColumn.Width = 31;
             // 
             // TypeColumn
             // 
-            this.TypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Gray;
-            this.TypeColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.TypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Gray;
+            this.TypeColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.TypeColumn.HeaderText = "Type";
             this.TypeColumn.Name = "TypeColumn";
             this.TypeColumn.ReadOnly = true;
@@ -127,7 +122,7 @@
             // 
             // ParameterColumn
             // 
-            this.ParameterColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ParameterColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.ParameterColumn.HeaderText = "Parameter";
             this.ParameterColumn.MaxInputLength = 250;
             this.ParameterColumn.Name = "ParameterColumn";
@@ -136,7 +131,7 @@
             // 
             // ValueColumn
             // 
-            this.ValueColumn.FillWeight = 174.359F;
+            this.ValueColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ValueColumn.HeaderText = "Value";
             this.ValueColumn.MaxInputLength = 250;
             this.ValueColumn.Name = "ValueColumn";
@@ -168,7 +163,7 @@
             this.TableButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TableButtons.Controls.Add(this.PublishButton, 0, 0);
             this.TableButtons.Controls.Add(this.CancelEditButton, 1, 0);
-            this.TableButtons.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableButtons.Dock = System.Windows.Forms.DockStyle.Left;
             this.TableButtons.Location = new System.Drawing.Point(8, 406);
             this.TableButtons.Name = "TableButtons";
             this.TableButtons.RowCount = 1;
@@ -184,6 +179,7 @@
             this.PublishButton.Name = "PublishButton";
             this.PublishButton.Size = new System.Drawing.Size(155, 23);
             this.PublishButton.TabIndex = 1;
+            this.PublishButton.TabStop = false;
             this.PublishButton.Text = "Publish";
             this.PublishButton.UseVisualStyleBackColor = true;
             // 
@@ -195,6 +191,7 @@
             this.CancelEditButton.Name = "CancelEditButton";
             this.CancelEditButton.Size = new System.Drawing.Size(156, 23);
             this.CancelEditButton.TabIndex = 3;
+            this.CancelEditButton.TabStop = false;
             this.CancelEditButton.Text = "Cancel";
             this.CancelEditButton.UseVisualStyleBackColor = true;
             // 
@@ -209,7 +206,7 @@
             this.tableLayoutPanel1.Controls.Add(this.FamilyLabel, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.TypeLabel, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.TypeDropDown, 1, 1);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(8, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
@@ -243,6 +240,7 @@
             this.LinkDropDown.Name = "LinkDropDown";
             this.LinkDropDown.Size = new System.Drawing.Size(267, 21);
             this.LinkDropDown.TabIndex = 5;
+            this.LinkDropDown.TabStop = false;
             // 
             // FamilyDropDown
             // 
@@ -254,6 +252,7 @@
             this.FamilyDropDown.Name = "FamilyDropDown";
             this.FamilyDropDown.Size = new System.Drawing.Size(267, 21);
             this.FamilyDropDown.TabIndex = 2;
+            this.FamilyDropDown.TabStop = false;
             // 
             // FamilyLabel
             // 
@@ -291,6 +290,7 @@
             this.TypeDropDown.Name = "TypeDropDown";
             this.TypeDropDown.Size = new System.Drawing.Size(267, 21);
             this.TypeDropDown.TabIndex = 3;
+            this.TypeDropDown.TabStop = false;
             // 
             // ParametersDialog
             // 
@@ -319,11 +319,6 @@
         public System.Windows.Forms.DataGridView ParametersDataGrid;
         private System.Windows.Forms.TableLayoutPanel TableLayoutMain;
         private System.Windows.Forms.Button PublishButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn EditColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TypeColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ParameterColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ValueColumn;
         private System.Windows.Forms.TableLayoutPanel TableButtons;
         private System.Windows.Forms.Button CancelEditButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -333,5 +328,10 @@
         public System.Windows.Forms.ComboBox TypeDropDown;
         private System.Windows.Forms.Label LinkLabel;
         public System.Windows.Forms.ComboBox LinkDropDown;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn EditColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TypeColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParameterColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ValueColumn;
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Utils;
 
 namespace RemoteDataManager
 {
@@ -22,11 +23,9 @@ namespace RemoteDataManager
         {
             ParametersDataGrid.Rows.Clear();
 
-            DB.Document linkdoc = EditGlobalParameters.LinksDict[LinkDropDown.Text];
-
-            if(linkdoc != null)
+            if(EditGlobalParameters.LinksDict[LinkDropDown.Text].Document != null)
             {
-                EditGlobalParameters.GetLinkGlobalParameters(linkdoc, EditGlobalParameters.Units, ParametersDataGrid);
+                Parameters.GetLinkGlobalParameters(EditGlobalParameters.LinksDict[LinkDropDown.Text].Document, EditGlobalParameters.Units, ParametersDataGrid);
             }
         }        
     }

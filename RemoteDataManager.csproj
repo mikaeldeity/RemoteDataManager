@@ -82,7 +82,7 @@
     <Compile Include="Dialogs\Results.Designer.cs">
       <DependentUpon>Results.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities.cs" />
+    <Compile Include="DocumentUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="RemoteDataManager.addin">
@@ -108,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\EditGlobalParameters.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CompareParameters.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
