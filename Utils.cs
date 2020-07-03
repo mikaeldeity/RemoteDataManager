@@ -184,13 +184,19 @@ namespace Utils
                     }
                     else if (paramtype == "Integer")
                     {
-                        int.TryParse(value, out int dp);
-                        parameter.Set(dp);
+                        if(int.TryParse(value, out int dp))
+                        {
+                            parameter.Set(dp);
+                        }
+                        else { return "Value is not an integer"; }
                     }
                     else if (paramtype == "Number")
                     {
-                        Double.TryParse(value, out double dp);
-                        parameter.Set(dp);
+                        if(Double.TryParse(value, out double dp))
+                        {
+                            parameter.Set(dp);
+                        }
+                        else { return "Value is not an number"; }
                     }
                     else if (paramtype == "Length")
                     {
@@ -204,41 +210,59 @@ namespace Utils
                     {
                         UnitType utype = parameter.Definition.UnitType;
                         DisplayUnitType dunit = Units.GetFormatOptions(utype).DisplayUnits;
-                        Double.TryParse(value, out double dp);
-                        double dp1 = UnitUtils.ConvertToInternalUnits(dp, dunit);
-                        parameter.Set(dp1);
+                        if(Double.TryParse(value, out double dp))
+                        {
+                            double dp1 = UnitUtils.ConvertToInternalUnits(dp, dunit);
+                            parameter.Set(dp1);
+                        }
+                        else { return "Value is not an number"; }
                     }
                     else if (paramtype == "Volume")
                     {
                         UnitType utype = parameter.Definition.UnitType;
                         DisplayUnitType dunit = Units.GetFormatOptions(utype).DisplayUnits;
-                        Double.TryParse(value, out double dp);
-                        double dp1 = UnitUtils.ConvertToInternalUnits(dp, dunit);
-                        parameter.Set(dp1);
+                        if(Double.TryParse(value, out double dp))
+                        {
+                            double dp1 = UnitUtils.ConvertToInternalUnits(dp, dunit);
+                            parameter.Set(dp1);
+                        }
+                        else { return "Value is not an number"; }
                     }
                     else if (paramtype == "Angle")
                     {
-                        Double.TryParse(value, out double dp);
-                        double ap1 = UnitUtils.Convert(dp, DisplayUnitType.DUT_DECIMAL_DEGREES, DisplayUnitType.DUT_RADIANS);
-                        parameter.Set(ap1);
+                        if(Double.TryParse(value, out double dp))
+                        {
+                            double ap1 = UnitUtils.Convert(dp, DisplayUnitType.DUT_DECIMAL_DEGREES, DisplayUnitType.DUT_RADIANS);
+                            parameter.Set(ap1);
+                        }
+                        else { return "Value is not an number"; }
                     }
                     else if (paramtype == "Slope")
                     {
-                        Double.TryParse(value, out double dp);
-                        parameter.Set(dp / 100);
+                        if(Double.TryParse(value, out double dp))
+                        {
+                            parameter.Set(dp / 100);
+                        }
+                        else { return "Value is not an number"; }
                     }
                     else if (paramtype == "Currency")
                     {
-                        Double.TryParse(value, out double dp);
-                        parameter.Set(dp);
+                        if(Double.TryParse(value, out double dp))
+                        {
+                            parameter.Set(dp);
+                        }
+                        else { return "Value is not an number"; }
                     }
                     else if (paramtype == "MassDensity")
                     {
                         UnitType utype = parameter.Definition.UnitType;
                         DisplayUnitType dunit = Units.GetFormatOptions(utype).DisplayUnits;
-                        Double.TryParse(value, out double dp);
-                        double mp1 = UnitUtils.ConvertToInternalUnits(dp, dunit);
-                        parameter.Set(mp1);
+                        if(Double.TryParse(value, out double dp))
+                        {
+                            double mp1 = UnitUtils.ConvertToInternalUnits(dp, dunit);
+                            parameter.Set(mp1);
+                        }
+                        else { return "Value is not an number"; }
                     }
                     else if (paramtype == "YesNo")
                     {
@@ -250,6 +274,7 @@ namespace Utils
                         {
                             parameter.Set(0);
                         }
+                        else { return "Value is not a Yes/No"; }
                     }
                     else if (paramtype == "Material")
                     {
@@ -258,6 +283,7 @@ namespace Utils
                         {
                             parameter.Set(material);
                         }
+                        else { return "Material not found"; }
                     }
                 }
                 return value;
