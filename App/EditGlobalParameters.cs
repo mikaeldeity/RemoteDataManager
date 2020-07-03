@@ -131,8 +131,8 @@ namespace RemoteDataManager
             {
                 int index = datagrid.Rows.Add();
                 datagrid.Rows[index].Cells["ParameterColumn"].Value = remoteglobalparameter.Name;
-                datagrid.Rows[index].Cells["TypeColumn"].Value = remoteglobalparameter.Type;
-                datagrid.Rows[index].Cells["ValueColumn"].Value = remoteglobalparameter.Value;                
+                datagrid.Rows[index].Cells["TypeColumn"].Value = remoteglobalparameter.Type;                
+                datagrid.Rows[index].Cells["ValueColumn"].Value = remoteglobalparameter.Value;
             }
         }
     }

@@ -511,6 +511,19 @@ namespace Utils
             }
         }
     }
+    class Materials
+    {
+        internal static List<string> GetDocumentMaterials(Document doc)
+        {
+            List<string> materials = new List<string>();
+            ICollection<ElementId> collmat = new FilteredElementCollector(doc).OfClass(typeof(Material)).ToElementIds();
+            foreach (ElementId i in collmat)
+            {
+                materials.Add(doc.GetElement(i).Name);
+            }
+            return materials;
+        }
+    }
     class SynchLockCallback : ICentralLockedCallback
     {
         public bool ShouldWaitForLockAvailability()
