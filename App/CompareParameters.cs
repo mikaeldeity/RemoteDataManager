@@ -16,7 +16,7 @@ namespace RemoteDataManager
     {
         internal static Units Units;
 
-        internal static Dictionary<string, Link> LinksDict;
+        internal static Dictionary<string, RemoteLink> LinksDict;
 
         internal static Dictionary<string, Dictionary<string, Dictionary<string, List<ElementType>>>> Database;
 
@@ -69,9 +69,16 @@ namespace RemoteDataManager
                 }
             }
 
-            CompareParametersDialog dialog = new CompareParametersDialog();            
+            CompareParametersDialog dialog = new CompareParametersDialog();
 
-            dialog.ShowDialog();
+            DialogResult result = dialog.ShowDialog();
+
+            if (result != DialogResult.OK) { return Result.Cancelled; }
+
+            for(int i = 2; i < dialog.TypesDatagrid.Columns.Count; i++)
+            {
+
+            }
 
             return Result.Succeeded;
         }        

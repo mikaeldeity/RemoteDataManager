@@ -16,9 +16,12 @@ namespace RemoteDataManager
     [Autodesk.Revit.Attributes.Regeneration(Autodesk.Revit.Attributes.RegenerationOption.Manual)]
     class EditGlobalParameters : IExternalCommand
     {
-        internal static Dictionary<string, Link> LinksDict;
+        internal static Dictionary<string, RemoteLink> LinksDict;
 
         internal static Units Units;
+
+        internal static RemoteGlobalParameters GlobalParameters;
+
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             UIApplication uiapp = commandData.Application;
@@ -35,12 +38,16 @@ namespace RemoteDataManager
 
             DataGridView datagrid = dialog.ParametersDataGrid;
 
-            Link link = LinksDict[linkarray.First()];
+            RemoteLink link = LinksDict[linkarray.First()];
 
             dialog.LinkDropDown.Items.AddRange(linkarray);
-            dialog.LinkDropDown.Text = linkarray.First();            
+            dialog.LinkDropDown.Text = linkarray.First();
 
-            Parameters.GetLinkGlobalParameters(link.Document, Units, datagrid);
+            GlobalParameters = new RemoteGlobalParameters(link.Document, Units);
+
+            DrawDatagrid(datagrid, GlobalParameters);
+
+            //Parameters.GetLinkGlobalParameters(link.Document, Units, datagrid);
 
             var result = dialog.ShowDialog();            
 
@@ -83,7 +90,9 @@ namespace RemoteDataManager
 
                 foreach (string parameter in paramdict.Keys)
                 {
-                    string r = Parameters.EditGlobalParameter(link.OpenDocument, Units, parameter, paramdict[parameter]);
+                    string r = GlobalParameters.EditParameter(link.OpenDocument, parameter, paramdict[parameter]);
+
+                    //string r = Parameters.EditGlobalParameter(link.OpenDocument, Units, parameter, paramdict[parameter]);
 
                     results.Add(new string[] { parameter, r });
                 }
@@ -119,5 +128,16 @@ namespace RemoteDataManager
 
             return Result.Succeeded;
         }        
+        internal static void DrawDatagrid(DataGridView datagrid, RemoteGlobalParameters remoteglobalparameters)
+        {
+            datagrid.Rows.Clear();
+            foreach (RemoteGlobalParameter remoteglobalparameter in remoteglobalparameters.GlobalParameters)
+            {
+                int index = datagrid.Rows.Add();
+                datagrid.Rows[index].Cells["ParameterColumn"].Value = remoteglobalparameter.Name;
+                datagrid.Rows[index].Cells["TypeColumn"].Value = remoteglobalparameter.Type;
+                datagrid.Rows[index].Cells["ValueColumn"].Value = remoteglobalparameter.Value;                
+            }
+        }
     }
 }

@@ -22,6 +22,8 @@ namespace RemoteDataManager
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
 
+            Units units = doc.GetUnits();
+
             Reference selected;
 
             try
@@ -36,7 +38,7 @@ namespace RemoteDataManager
 
             RevitLinkInstance linkinstance = doc.GetElement(id) as RevitLinkInstance;
 
-            Link link = new Link(doc, linkinstance);
+            RemoteLink link = new RemoteLink(doc, linkinstance);
 
             Element linkedelement = link.Document.GetElement(linkid);
 
@@ -45,6 +47,8 @@ namespace RemoteDataManager
             ElementId typeId = linkedelement.GetTypeId();
 
             ElementType type = link.Document.GetElement(typeId) as ElementType;
+
+            RemoteType remotetype = new RemoteType(type, typeId, units);
 
             ParametersDialog dialog = new ParametersDialog();
 
@@ -62,9 +66,7 @@ namespace RemoteDataManager
 
             DataGridView datagrid = dialog.ParametersDataGrid;
 
-            Units units = doc.GetUnits();
-
-            Parameters.GetElementTypeParameters(type, units, datagrid);
+            DrawDatagrid(datagrid, remotetype);
 
             DialogResult result = dialog.ShowDialog();
 
@@ -76,7 +78,7 @@ namespace RemoteDataManager
             {
                 if (Convert.ToBoolean(datagrid.Rows[i].Cells["EditColumn"].Value) == true)
                 {
-                    string p = (string)datagrid.Rows[i].Cells["ParameterColumn"].Value;
+                    string p = (string)datagrid.Rows[i].Cells["ParameterColumn"].Value;                    
 
                     if (datagrid.Rows[i].Cells["ValueColumn"].Value != null)
                     {
@@ -103,11 +105,9 @@ namespace RemoteDataManager
             {
                 t1.Start();
 
-                type = link.OpenDocument.GetElement(typeId) as ElementType;
-
                 foreach (string parameter in paramdict.Keys)
                 {
-                    string r = Parameters.EditTypeParameter(type, units, parameter, paramdict[parameter]);
+                    string r = remotetype.EditParameter(link.OpenDocument, parameter, paramdict[parameter]);
 
                     results.Add(new string[] { parameter, r });
                 }
@@ -143,5 +143,15 @@ namespace RemoteDataManager
 
             return Result.Succeeded;
         }        
+        internal static void DrawDatagrid(DataGridView datagrid, RemoteType remotetype)
+        {
+            foreach (RemoteParameter remoteparameter in remotetype.Parameters)
+            {
+                int index = datagrid.Rows.Add();
+                datagrid.Rows[index].Cells["ParameterColumn"].Value = remoteparameter.Name;
+                datagrid.Rows[index].Cells["TypeColumn"].Value = remoteparameter.Type;
+                datagrid.Rows[index].Cells["ValueColumn"].Value = remoteparameter.Value;
+            }
+        }
     }
 }

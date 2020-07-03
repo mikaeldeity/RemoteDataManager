@@ -16,5 +16,10 @@ namespace RemoteDataManager
         {
             InitializeComponent();
         }
+
+        private void ParametersDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ParametersDataGrid.BeginEdit(false);
+        }
     }
 }

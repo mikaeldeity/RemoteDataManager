@@ -105,6 +105,7 @@
             this.ParametersDataGrid.Size = new System.Drawing.Size(323, 356);
             this.ParametersDataGrid.TabIndex = 0;
             this.ParametersDataGrid.TabStop = false;
+            this.ParametersDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ParametersDataGrid_CellClick);
             // 
             // EditColumn
             // 

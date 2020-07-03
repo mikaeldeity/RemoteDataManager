@@ -51,9 +51,7 @@ namespace RemoteDataManager
         {
             TypesDatagrid.Rows.Clear();
 
-            int count = TypesDatagrid.ColumnCount;
-
-            while(TypesDatagrid.ColumnCount > 3)
+            while(TypesDatagrid.ColumnCount > 2)
             {
                 TypesDatagrid.Columns.RemoveAt(TypesDatagrid.ColumnCount - 1);
             }
@@ -61,6 +59,11 @@ namespace RemoteDataManager
             List<ElementType> types = CompareParameters.Database[CategoryDropDown.SelectedItem.ToString()][FamilyDropDown.SelectedItem.ToString()][TypeDropDown.SelectedItem.ToString()];
 
             Parameters.GetCombinedElementTypeParameters(types, CompareParameters.Units, TypesDatagrid);
+        }
+
+        private void TypesDatagrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            TypesDatagrid.BeginEdit(false);
         }
     }
 }

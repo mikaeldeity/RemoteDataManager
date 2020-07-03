@@ -25,8 +25,17 @@ namespace RemoteDataManager
 
             if(EditGlobalParameters.LinksDict[LinkDropDown.Text].Document != null)
             {
-                Parameters.GetLinkGlobalParameters(EditGlobalParameters.LinksDict[LinkDropDown.Text].Document, EditGlobalParameters.Units, ParametersDataGrid);
+                EditGlobalParameters.GlobalParameters = new RemoteGlobalParameters(EditGlobalParameters.LinksDict[LinkDropDown.Text].Document, EditGlobalParameters.Units);
+
+                EditGlobalParameters.DrawDatagrid(ParametersDataGrid, EditGlobalParameters.GlobalParameters);
+
+                //Parameters.GetLinkGlobalParameters(EditGlobalParameters.LinksDict[LinkDropDown.Text].Document, EditGlobalParameters.Units, ParametersDataGrid);
             }
-        }        
+        }
+
+        private void ParametersDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ParametersDataGrid.BeginEdit(false);
+        }
     }
 }
