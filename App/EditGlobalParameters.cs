@@ -30,7 +30,7 @@ namespace RemoteDataManager
 
             Units = doc.GetUnits();
 
-            LinksDict = DocumentUtils.GetAllLinks(doc);
+            LinksDict = Link.GetAllLinks(doc);
 
             GlobalParametersDialog dialog = new GlobalParametersDialog();
 
@@ -46,8 +46,6 @@ namespace RemoteDataManager
             GlobalParameters = new RemoteGlobalParameters(link.Document, Units);
 
             DrawDatagrid(datagrid, GlobalParameters);
-
-            //Parameters.GetLinkGlobalParameters(link.Document, Units, datagrid);
 
             var result = dialog.ShowDialog();            
 
@@ -92,8 +90,6 @@ namespace RemoteDataManager
                 {
                     string r = GlobalParameters.EditParameter(link.OpenDocument, parameter, paramdict[parameter]);
 
-                    //string r = Parameters.EditGlobalParameter(link.OpenDocument, Units, parameter, paramdict[parameter]);
-
                     results.Add(new string[] { parameter, r });
                 }
 
@@ -119,7 +115,7 @@ namespace RemoteDataManager
 
             var resultsdatagrid = resultsdialog.ResultsDatagrid;
 
-            DocumentUtils.GetResults(resultsdatagrid, results);
+            Link.GetResults(resultsdatagrid, results);
 
             resultsdialog.LinkDropDown.Items.Add(title);
             resultsdialog.LinkDropDown.Text = title;

@@ -134,7 +134,7 @@ namespace RemoteDataManager
 
             var resultsdatagrid = resultsdialog.ResultsDatagrid;
 
-            DocumentUtils.GetResults(resultsdatagrid, results);
+            Link.GetResults(resultsdatagrid, results);
 
             resultsdialog.LinkDropDown.Items.Add(title);
             resultsdialog.LinkDropDown.Text = title;

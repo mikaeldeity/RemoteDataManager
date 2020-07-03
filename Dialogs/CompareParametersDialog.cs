@@ -56,9 +56,12 @@ namespace RemoteDataManager
                 TypesDatagrid.Columns.RemoveAt(TypesDatagrid.ColumnCount - 1);
             }
 
-            List<ElementType> types = CompareParameters.Database[CategoryDropDown.SelectedItem.ToString()][FamilyDropDown.SelectedItem.ToString()][TypeDropDown.SelectedItem.ToString()];
+            List<RemoteType> types = CompareParameters.Database[CategoryDropDown.SelectedItem.ToString()][FamilyDropDown.SelectedItem.ToString()][TypeDropDown.SelectedItem.ToString()];
 
-            Parameters.GetCombinedElementTypeParameters(types, CompareParameters.Units, TypesDatagrid);
+            CompareParameters.DrawDatagrid(types, TypesDatagrid);
+
+            //Parameters.GetCombinedElementTypeParameters(types, CompareParameters.Units, TypesDatagrid);
+
         }
 
         private void TypesDatagrid_CellClick(object sender, DataGridViewCellEventArgs e)

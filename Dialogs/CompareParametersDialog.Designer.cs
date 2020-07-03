@@ -28,12 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.TableButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.PublishButton = new System.Windows.Forms.Button();
-            this.CancelEditButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.TypeDropDown = new System.Windows.Forms.ComboBox();
@@ -45,7 +42,6 @@
             this.ParameterColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
-            this.TableButtons.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TypesDatagrid)).BeginInit();
             this.SuspendLayout();
@@ -56,58 +52,18 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 5F));
-            this.tableLayoutPanel1.Controls.Add(this.TableButtons, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.TypesDatagrid, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 5F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(339, 441);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // TableButtons
-            // 
-            this.TableButtons.ColumnCount = 2;
-            this.TableButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableButtons.Controls.Add(this.PublishButton, 0, 0);
-            this.TableButtons.Controls.Add(this.CancelEditButton, 1, 0);
-            this.TableButtons.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TableButtons.Location = new System.Drawing.Point(8, 404);
-            this.TableButtons.Name = "TableButtons";
-            this.TableButtons.RowCount = 1;
-            this.TableButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableButtons.Size = new System.Drawing.Size(323, 29);
-            this.TableButtons.TabIndex = 6;
-            // 
-            // PublishButton
-            // 
-            this.PublishButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.PublishButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PublishButton.Location = new System.Drawing.Point(3, 3);
-            this.PublishButton.Name = "PublishButton";
-            this.PublishButton.Size = new System.Drawing.Size(155, 23);
-            this.PublishButton.TabIndex = 1;
-            this.PublishButton.TabStop = false;
-            this.PublishButton.Text = "Publish";
-            this.PublishButton.UseVisualStyleBackColor = true;
-            // 
-            // CancelEditButton
-            // 
-            this.CancelEditButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelEditButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CancelEditButton.Location = new System.Drawing.Point(164, 3);
-            this.CancelEditButton.Name = "CancelEditButton";
-            this.CancelEditButton.Size = new System.Drawing.Size(156, 23);
-            this.CancelEditButton.TabIndex = 3;
-            this.CancelEditButton.TabStop = false;
-            this.CancelEditButton.Text = "Cancel";
-            this.CancelEditButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -145,7 +101,7 @@
             // TypeDropDown
             // 
             this.TypeDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TypeDropDown.DropDownWidth = 500;
+            this.TypeDropDown.DropDownWidth = 257;
             this.TypeDropDown.FormattingEnabled = true;
             this.TypeDropDown.Location = new System.Drawing.Point(63, 68);
             this.TypeDropDown.Margin = new System.Windows.Forms.Padding(3, 6, 3, 3);
@@ -214,20 +170,20 @@
             this.TypesDatagrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ParameterColumn,
             this.TypeColumn});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TypesDatagrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TypesDatagrid.DefaultCellStyle = dataGridViewCellStyle4;
             this.TypesDatagrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TypesDatagrid.Location = new System.Drawing.Point(8, 103);
             this.TypesDatagrid.MultiSelect = false;
             this.TypesDatagrid.Name = "TypesDatagrid";
             this.TypesDatagrid.RowHeadersVisible = false;
-            this.TypesDatagrid.Size = new System.Drawing.Size(323, 295);
+            this.TypesDatagrid.Size = new System.Drawing.Size(323, 330);
             this.TypesDatagrid.TabIndex = 5;
             this.TypesDatagrid.TabStop = false;
             this.TypesDatagrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TypesDatagrid_CellClick);
@@ -244,10 +200,10 @@
             // TypeColumn
             // 
             this.TypeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Gray;
-            this.TypeColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Gray;
+            this.TypeColumn.DefaultCellStyle = dataGridViewCellStyle3;
             this.TypeColumn.FillWeight = 156.4309F;
             this.TypeColumn.HeaderText = "Type";
             this.TypeColumn.Name = "TypeColumn";
@@ -266,9 +222,9 @@
             this.MinimumSize = new System.Drawing.Size(355, 480);
             this.Name = "CompareParametersDialog";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compare Parameters";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.TableButtons.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TypesDatagrid)).EndInit();
@@ -289,8 +245,5 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParameterColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeColumn;
-        private System.Windows.Forms.TableLayoutPanel TableButtons;
-        private System.Windows.Forms.Button PublishButton;
-        private System.Windows.Forms.Button CancelEditButton;
     }
 }

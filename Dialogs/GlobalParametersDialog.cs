@@ -28,8 +28,6 @@ namespace RemoteDataManager
                 EditGlobalParameters.GlobalParameters = new RemoteGlobalParameters(EditGlobalParameters.LinksDict[LinkDropDown.Text].Document, EditGlobalParameters.Units);
 
                 EditGlobalParameters.DrawDatagrid(ParametersDataGrid, EditGlobalParameters.GlobalParameters);
-
-                //Parameters.GetLinkGlobalParameters(EditGlobalParameters.LinksDict[LinkDropDown.Text].Document, EditGlobalParameters.Units, ParametersDataGrid);
             }
         }
 
