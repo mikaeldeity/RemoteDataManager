@@ -1,10 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utils;
 
@@ -21,7 +17,7 @@ namespace RemoteDataManager
         internal static Dictionary<string, Dictionary<string, Dictionary<string, List<RemoteType>>>> Database;
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
-        {            
+        {
             UIApplication uiapp = commandData.Application;
             UIDocument uidoc = uiapp.ActiveUIDocument;
             Document doc = uidoc.Document;
@@ -38,7 +34,7 @@ namespace RemoteDataManager
 
                 IList<Element> typecollector = new FilteredElementCollector(linkdoc).OfClass(typeof(ElementType)).ToElements();
 
-                foreach(Element el in typecollector)
+                foreach (Element el in typecollector)
                 {
                     ElementType type = el as ElementType;
 
@@ -116,7 +112,7 @@ namespace RemoteDataManager
                     {
                         if (datagrid.Rows[row].Cells["ParameterColumn"].Value.ToString() == parameter.Name)
                         {
-                            datagrid.Rows[row].Cells[column].Value = parameter.Value;                            
+                            datagrid.Rows[row].Cells[column].Value = parameter.Value;
                         }
                     }
                 }

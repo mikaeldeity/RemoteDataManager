@@ -1,12 +1,6 @@
-﻿using Autodesk.Revit.DB;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utils;
 using static RemoteDataManager.CompareParameters;
@@ -51,7 +45,7 @@ namespace RemoteDataManager
         {
             TypesDatagrid.Rows.Clear();
 
-            while(TypesDatagrid.ColumnCount > 2)
+            while (TypesDatagrid.ColumnCount > 2)
             {
                 TypesDatagrid.Columns.RemoveAt(TypesDatagrid.ColumnCount - 1);
             }

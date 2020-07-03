@@ -3,9 +3,6 @@ using Autodesk.Revit.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Utils
@@ -30,7 +27,7 @@ namespace Utils
         internal RevitLinkType Type { get; }
         internal bool IsLoaded { get; }
         internal bool IsWorkShared { get; }
-        internal Document OpenDocument { get; set; }        
+        internal Document OpenDocument { get; set; }
         internal bool Open(UIApplication uiapp)
         {
             try
@@ -146,7 +143,7 @@ namespace Utils
         internal ElementType ElementType { get; }
         internal ElementId TypeId { get; }
         internal string Link { get; }
-        internal List<RemoteParameter> Parameters { get;}
+        internal List<RemoteParameter> Parameters { get; }
         private List<RemoteParameter> GetParameters()
         {
             List<RemoteParameter> remoteparameters = new List<RemoteParameter>();
@@ -270,7 +267,7 @@ namespace Utils
                 return e.Message;
             }
         }
-        internal ElementId FindMaterialByName(Document doc,string name)
+        internal ElementId FindMaterialByName(Document doc, string name)
         {
             ICollection<ElementId> collmat = new FilteredElementCollector(ElementType.Document).OfClass(typeof(Material)).ToElementIds();
             foreach (ElementId i in collmat)
@@ -403,7 +400,7 @@ namespace Utils
                         {
                             ElementIdParameterValue dvalue = parameter.GetValue() as ElementIdParameterValue;
 
-                            ElementId mat = FindMaterialByName(doc,value);
+                            ElementId mat = FindMaterialByName(doc, value);
 
                             if (mat != null)
                             {
@@ -482,7 +479,7 @@ namespace Utils
     {
         internal static Dictionary<string, RemoteLink> GetAllLinks(Document doc)
         {
-            Dictionary <string, RemoteLink> linksdict = new Dictionary<string, RemoteLink>();
+            Dictionary<string, RemoteLink> linksdict = new Dictionary<string, RemoteLink>();
 
             IList<Element> links = new FilteredElementCollector(doc).OfClass(typeof(RevitLinkInstance)).ToElements();
 
@@ -500,14 +497,14 @@ namespace Utils
             }
 
             return linksdict;
-        }        
+        }
         internal static void GetResults(DataGridView datagrid, List<string[]> results)
         {
-            foreach(string[] p in results)
+            foreach (string[] p in results)
             {
                 int index = datagrid.Rows.Add();
                 datagrid.Rows[index].Cells["ParameterColumn"].Value = p[0];
-                datagrid.Rows[index].Cells["ValueColumn"].Value = p[1];                
+                datagrid.Rows[index].Cells["ValueColumn"].Value = p[1];
             }
         }
     }

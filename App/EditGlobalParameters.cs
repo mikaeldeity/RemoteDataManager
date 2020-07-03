@@ -1,12 +1,8 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using Autodesk.Revit.UI.Selection;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utils;
 
@@ -47,9 +43,9 @@ namespace RemoteDataManager
 
             DrawDatagrid(datagrid, GlobalParameters);
 
-            var result = dialog.ShowDialog();            
+            var result = dialog.ShowDialog();
 
-            if(result != DialogResult.OK) { return Result.Cancelled; }
+            if (result != DialogResult.OK) { return Result.Cancelled; }
 
             link = LinksDict[dialog.LinkDropDown.Text];
 
@@ -74,7 +70,7 @@ namespace RemoteDataManager
 
             if (paramdict.Keys.Count == 0) { return Result.Cancelled; }
 
-            if(!link.Open(uiapp)) { return Result.Failed; }
+            if (!link.Open(uiapp)) { return Result.Failed; }
 
             Transaction t1 = new Transaction(link.OpenDocument, "Assign Parameters");
 
@@ -123,7 +119,7 @@ namespace RemoteDataManager
             resultsdialog.ShowDialog();
 
             return Result.Succeeded;
-        }        
+        }
         internal static void DrawDatagrid(DataGridView datagrid, RemoteGlobalParameters remoteglobalparameters)
         {
             datagrid.Rows.Clear();
@@ -131,7 +127,7 @@ namespace RemoteDataManager
             {
                 int index = datagrid.Rows.Add();
                 datagrid.Rows[index].Cells["ParameterColumn"].Value = remoteglobalparameter.Name;
-                datagrid.Rows[index].Cells["TypeColumn"].Value = remoteglobalparameter.Type;                
+                datagrid.Rows[index].Cells["TypeColumn"].Value = remoteglobalparameter.Type;
                 datagrid.Rows[index].Cells["ValueColumn"].Value = remoteglobalparameter.Value;
             }
         }

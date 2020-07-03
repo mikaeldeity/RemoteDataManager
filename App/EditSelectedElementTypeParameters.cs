@@ -3,10 +3,6 @@ using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utils;
 
@@ -70,15 +66,15 @@ namespace RemoteDataManager
 
             DialogResult result = dialog.ShowDialog();
 
-            if(result != DialogResult.OK) { return Result.Cancelled; }            
+            if (result != DialogResult.OK) { return Result.Cancelled; }
 
             Dictionary<string, string> paramdict = new Dictionary<string, string>();
 
-            for(int i=0; i< datagrid.Rows.Count; i++)
+            for (int i = 0; i < datagrid.Rows.Count; i++)
             {
                 if (Convert.ToBoolean(datagrid.Rows[i].Cells["EditColumn"].Value) == true)
                 {
-                    string p = (string)datagrid.Rows[i].Cells["ParameterColumn"].Value;                    
+                    string p = (string)datagrid.Rows[i].Cells["ParameterColumn"].Value;
 
                     if (datagrid.Rows[i].Cells["ValueColumn"].Value != null)
                     {
@@ -91,9 +87,9 @@ namespace RemoteDataManager
                 }
             }
 
-            if(paramdict.Keys.Count == 0) { return Result.Cancelled; }
+            if (paramdict.Keys.Count == 0) { return Result.Cancelled; }
 
-            if(!link.Open(uiapp)) { return Result.Failed; }
+            if (!link.Open(uiapp)) { return Result.Failed; }
 
             Transaction t1 = new Transaction(link.OpenDocument, "Assign Parameters");
 
@@ -142,7 +138,7 @@ namespace RemoteDataManager
             resultsdialog.ShowDialog();
 
             return Result.Succeeded;
-        }        
+        }
         internal static void DrawDatagrid(DataGridView datagrid, RemoteType remotetype)
         {
             foreach (RemoteParameter remoteparameter in remotetype.Parameters)
